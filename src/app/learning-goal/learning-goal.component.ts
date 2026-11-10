@@ -13,8 +13,11 @@ export class LearningGoalComponent {
   @Output() needsPractice = new EventEmitter<string>();
 
   onLearned() {
-    console.log('1. Buttone clicked')
     this.learned.emit(this.goal.id)
   }
+
+onNeedsPractice() {
+  this.needsPractice.emit(this.goal.id);
+}
 
 }
