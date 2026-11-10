@@ -2,6 +2,9 @@
   @if (currentGoal) {
     <app-learning-goal [goal]="currentGoal"
     (learned)="onGoalLearned($event)"
+    (needsPractice)="onNeedsPractice($event)"
     />
+  } @else {
+    <p>Congratulations on completing all current goals!</p>
   }
 </main>
