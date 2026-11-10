@@ -12,10 +12,15 @@ import { LearningGoal } from './models/learning-goal';
 export class App {
   private learningGoalService = inject(LearningGoalService);
 
-  currentGoal = this.learningGoalService.getLearningGoals()[0];
+  currentGoal: LearningGoal | undefined = this.learningGoalService.getLearningGoals()[0];
 
   onGoalLearned(id: string) {
-    console.log('2. App received:', id)
     this.learningGoalService.completeGoal(id);
+    this.currentGoal = this.learningGoalService.getNextGoal();
+  }
+
+  onNeedsPractice(id: string) {
+    this.learningGoalService.repeatGoal(id);
+    this.currentGoal = this.learningGoalService.getNextGoal();
   }
 }
